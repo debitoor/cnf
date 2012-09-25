@@ -1,0 +1,6 @@
+--require ./test/common.js
+--reporter dot
+--ui bdd
+--recursive
+--colors
+--slow 100
