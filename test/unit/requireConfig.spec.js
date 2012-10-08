@@ -66,4 +66,11 @@ describe('config', function() {
 		expect(config.me).to.equal(true);
 		expect(config.nested.val).to.equal(false);
 	});
+	it('should set arguments passed from cli', function() {
+		process.argv = ['node', 'file.js', '--app.lolz','--app.anothernested.val','42'];
+		var config = require('../../source/config');
+
+		expect(config.lolz).to.equal(true);
+		expect(config.anothernested).to.not.exist;
+	});
 });

@@ -1,6 +1,5 @@
 var fs = require('fs');
 var path = require('path');
-var nconf = require('nconf');
 var env = process.env.APP_ENV || 'development';
 var envPath = path.join(process.cwd(),'config',env+'.app.config.js');
 
@@ -26,19 +25,38 @@ var replaceConfigs = function(visit) {
 	next([], envFile);
 };
 var lookupConfig = function(key) {
-	return key.split('.').reduce(function(result, key) {
+	if (!key.length) {
+		return envFile;
+	}
+	if (!Array.isArray(key)) {
+		return lookupConfig(key.split('.'));
+	}
+	return key.reduce(function(result, key) {
 		return result && result[key];
 	}, envFile);
 };
 
-nconf.argv();
+process.argv.filter(function(arg) {
+	return arg.indexOf('--app.') === 0;
+}).map(function(arg) {
+	var value = process.argv[process.argv.indexOf(arg)+1];
+	var key = arg.split('.').slice(1);
+	var result = {};
+
+	result.key = key.pop();
+	result.parent = key;
+	result.value = !value || value.indexOf('-') === 0 || value;
+	return result;
+}).forEach(function(item) {
+	var parent = lookupConfig(item.parent);
+
+	if (!parent) {
+		return;
+	}
+	parent[item.key] = item.value;
+});
 
 replaceConfigs(function(keys, value) {
-	var overriden = nconf.get('app:' + keys.join(':'));
-
-	return (overriden && typeof overriden !== 'object') ? overriden : value;
-});
-replaceConfigs(function(keys, value, parent) {
 	if (typeof value !== 'string') {
 		return value;
 	}
@@ -50,6 +68,9 @@ replaceConfigs(function(keys, value, parent) {
 	}
 	if (value === 'false') {
 		return false;
+	}
+	if (value === 'true') {
+		return true;
 	}
 	return value;
 });
