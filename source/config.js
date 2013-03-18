@@ -76,3 +76,4 @@ replaceConfigs(function(keys, value) {
 });
 
 module.exports = envFile;
+module.exports.env = env;
