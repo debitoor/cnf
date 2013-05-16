@@ -1,17 +1,16 @@
 {
 	"name": "config",
-	"version":"0.1.2",
+	"version":"1.0.0",
 	"private":true,
 	"scripts":{
 		"test":"node ./bin/runTests.js"
 	},
 	"devDependencies":{
-		"mocha":"~1.1",
-		"chai":"~1.0",
-		"sinon":"~1.3",
-		"sinon-chai":"~2.1",
-		"requiremock": "",
-		"jshint": "~0.8"
+		"mocha":"",
+		"chai":"",
+		"sinon":"",
+		"sinon-chai":"",
+		"jshint": "~0.9"
 	},
 	"main":"./source/config.js"
 }

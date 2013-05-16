@@ -56,6 +56,8 @@ process.argv.filter(function(arg) {
 	parent[item.key] = item.value;
 });
 
+var isRegExp = /^\$regexp\((\/.+\/(g|m|i){0,3})\)$/;
+
 replaceConfigs(function(keys, value) {
 	if (typeof value !== 'string') {
 		return value;
@@ -72,8 +74,16 @@ replaceConfigs(function(keys, value) {
 	if (value === 'true') {
 		return true;
 	}
+	if(isRegExp.test(value)){
+		return parseRegExp(value);
+	}
 	return value;
 });
+
+function parseRegExp(value){
+	var returnRegExp = new Function("return " + isRegExp.exec(value)[1] + ";");
+	return returnRegExp();
+}
 
 module.exports = envFile;
 module.exports.env = env;

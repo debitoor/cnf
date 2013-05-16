@@ -24,7 +24,7 @@
     "debug": false,
     "devel": false,
     "eqeqeq": true,
-    "evil": false,
+    "evil": true,
     "forin": false,
     "immed": true,
     "laxbreak": false,
