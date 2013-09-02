@@ -1,16 +1,19 @@
 {
-	"name": "config",
-	"version":"1.0.0",
-	"private":true,
-	"scripts":{
-		"test":"node ./bin/runTests.js"
-	},
-	"devDependencies":{
-		"mocha":"",
-		"chai":"",
-		"sinon":"",
-		"sinon-chai":"",
-		"jshint": "~0.9"
-	},
-	"main":"./source/config.js"
+  "name": "config",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node ./bin/runTests.js"
+  },
+  "devDependencies": {
+    "mocha": "",
+    "chai": "",
+    "sinon": "",
+    "sinon-chai": "",
+    "jshint": "~0.9"
+  },
+  "main": "./source/config.js",
+  "dependencies": {
+    "resolve": "~0.5.0"
+  }
 }
