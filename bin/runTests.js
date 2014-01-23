@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 "use strict";
-process.env.NODE_ENV = "test";
 
 var fs = require("fs");
 var path = require("path");
