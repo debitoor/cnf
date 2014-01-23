@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var resolve = require('resolve');
-var env = process.env.APP_ENV || 'development';
+var env = process.env.APP_ENV || process.env.NODE_ENV || 'development';
 
 var envPath = resolve.sync(env+'.app.config.js', {
 	basedir: process.cwd(),
