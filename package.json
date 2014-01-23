@@ -10,7 +10,8 @@
     "chai": "",
     "sinon": "",
     "sinon-chai": "",
-    "jshint": "~0.9"
+    "jshint": "~0.9",
+    "mocha-teamcity-reporter": "0.0.2"
   },
   "main": "./source/config.js",
   "dependencies": {
