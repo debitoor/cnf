@@ -1,5 +1,1 @@
-source/public/syntaxhighlighter
-source/public/jquery.url.js
-test/clientServerSupport
-test/SeleniumTests
-client/tests/jasmine
+node_modules

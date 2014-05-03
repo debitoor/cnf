@@ -1,11 +1,11 @@
-config
+cnf
 ======
 
 Configuration loader.
 
 To use it simply require it:
 
-	var config = require('config');
+	var config = require('cnf');
 
 	console.log('port: '+config.http.port);
 

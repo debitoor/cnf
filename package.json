@@ -1,6 +1,6 @@
 {
-  "name": "config",
-  "version": "2.1.1",
+  "name": "cnf",
+  "version": "2.1.2",
   "private": false,
   "scripts": {
     "test": "node ./bin/runTests.js"
@@ -10,8 +10,8 @@
     "chai": "",
     "sinon": "",
     "sinon-chai": "",
-    "jshint": "~0.9",
-    "mocha-teamcity-reporter": "0.0.2"
+    "mocha-teamcity-reporter": "0.0.2",
+    "mocha-jshint": "0.0.7"
   },
   "main": "./source/config.js",
   "dependencies": {
