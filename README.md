@@ -3,11 +3,15 @@ cnf
 
 Configuration loader.
 
+	npm install cnf
+
 To use it simply require it:
 
-	var config = require('cnf');
+```js
+var config = require('cnf');
 
-	console.log('port: '+config.http.port);
+console.log('port: '+config.http.port);
+```
 
 It will look for a configuration file called `$APP_ENV.app.config.js` in the current working directory.
 
