@@ -10,7 +10,6 @@
     "chai": "~1.10.0",
     "sinon": "~1.12.2",
     "sinon-chai": "~2.6.0",
-    "mocha-teamcity-reporter": "~0.0.2",
     "mocha-jshint": "~0.0.9"
   },
   "main": "./source/config.js",
