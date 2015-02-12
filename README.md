@@ -1,5 +1,5 @@
-cnf
-======
+cnf [![Build Status](https://travis-ci.org/e-conomic/config.svg?branch=master)](https://travis-ci.org/e-conomic/config)
+===
 
 Configuration loader.
 
