@@ -1,6 +1,6 @@
 {
   "name": "cnf",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Configuration loader",
   "scripts": {
     "test": "node ./bin/runTests.js"
