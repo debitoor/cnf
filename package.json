@@ -1,7 +1,7 @@
 {
   "name": "cnf",
   "version": "2.1.5",
-  "private": false,
+  "description": "Configuration loader",
   "scripts": {
     "test": "node ./bin/runTests.js"
   },
@@ -16,7 +16,6 @@
   "dependencies": {
     "resolve": "~0.5.0"
   },
-  "description": "config ======",
   "directories": {
     "test": "test"
   },
