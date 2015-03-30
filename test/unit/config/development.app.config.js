@@ -1,6 +1,6 @@
 module.exports = {
 	me:'development',
-	nested:{
-		val:42
+	nested: {
+		val: 42
 	}
 };

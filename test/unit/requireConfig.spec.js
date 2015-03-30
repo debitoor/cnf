@@ -22,13 +22,30 @@ describe('config', function() {
 		var config = require('../../source/config');
 		expect(config.me).to.eql('development');
 		expect(config.nested.val).to.equal(42);
+		expect(config.nested.val2).to.equal(78);
 	});
 
-	it('shoud load production', function() {
+	it('should load production', function() {
 		process.env.APP_ENV = 'production';
 		var config = require('../../source/config');
 		expect(config.me).to.eql('production');
 		expect(config.nested.val).to.equal(84);
+	});
+
+	it('should load staging', function() {
+		process.env.APP_ENV = 'staging';
+		var config = require('../../source/config');
+		expect(config).to.deep.eql({
+			env: 'staging',
+			me: 'global',
+			globalField: {
+				nested: 'yes'
+			},
+			nested: {
+				val: 90,
+				val2: 78
+			}
+		});
 	});
 
 	it('should fail to load', function() {

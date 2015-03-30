@@ -2,17 +2,23 @@ var fs = require('fs');
 var path = require('path');
 var resolve = require('resolve');
 var env = process.env.APP_ENV || process.env.NODE_ENV || 'development';
+var deepExtend = require('deep-extend');
 
-var envPath = resolve.sync(env+'.app.config.js', {
+var envPath = resolve.sync(env + '.app.config.js', {
 	basedir: process.cwd(),
 	moduleDirectory: 'config'
 });
 
-if (!fs.existsSync(envPath)) {
-	throw new Error(env+' configuration could not be found');
-}
-
 var envFile = require(envPath);
+
+try {
+	var globalConfigPath = resolve.sync('global.app.config.js', {
+		basedir: process.cwd(),
+		moduleDirectory: 'config'
+	});
+	var globalConfig = require(globalConfigPath);
+	envFile = deepExtend(globalConfig, envFile);
+} catch(e) {}
 
 var replaceConfigs = function(visit) {
 	var next = function(prevKeys, obj) {

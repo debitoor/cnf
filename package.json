@@ -1,20 +1,21 @@
 {
   "name": "cnf",
-  "version": "2.1.6",
+  "version": "2.2.0",
   "description": "Configuration loader",
   "scripts": {
     "test": "node ./bin/runTests.js"
   },
   "devDependencies": {
-    "mocha": "~2.1.0",
-    "chai": "~1.10.0",
-    "sinon": "~1.12.2",
-    "sinon-chai": "~2.6.0",
-    "mocha-jshint": "~0.0.9"
+    "chai": "^2.2.0",
+    "mocha": "^2.2.1",
+    "mocha-jshint": "^1.0.0",
+    "sinon": "^1.14.1",
+    "sinon-chai": "^2.7.0"
   },
   "main": "./source/config.js",
   "dependencies": {
-    "resolve": "~0.5.0"
+    "deep-extend": "^0.3.3",
+    "resolve": "^0.5.0"
   },
   "directories": {
     "test": "test"
