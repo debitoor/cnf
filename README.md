@@ -1,4 +1,4 @@
-cnf [![npm version](https://badge.fury.io/js/cnf.svg)](http://badge.fury.io/js/cnf) [![Build Status](https://travis-ci.org/e-conomic/config.svg?branch=master)](https://travis-ci.org/e-conomic/config) [![Dependency Status](https://david-dm.org/e-conomic/config.svg)](https://david-dm.org/e-conomic/config) [![devDependency Status](https://david-dm.org/e-conomic/config/dev-status.svg)](https://david-dm.org/e-conomic/config#info=devDependencies)
+cnf [![npm version](https://badge.fury.io/js/cnf.svg)](http://badge.fury.io/js/cnf) [![Build Status](https://travis-ci.org/debitoor/config.svg?branch=master)](https://travis-ci.org/debitoor/config) [![Dependency Status](https://david-dm.org/debitoor/config.svg)](https://david-dm.org/debitoor/config) [![devDependency Status](https://david-dm.org/debitoor/config/dev-status.svg)](https://david-dm.org/debitoor/config#info=devDependencies)
 ===
 
 Configuration loader.
