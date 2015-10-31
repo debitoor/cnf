@@ -3,10 +3,13 @@
   "version": "2.2.1",
   "description": "Configuration loader",
   "scripts": {
-    "test": "node ./bin/runTests.js"
+    "test": "istanbul cover _mocha",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "devDependencies": {
     "chai": "^3.3.0",
+    "coveralls": "2.11.4",
+    "istanbul": "0.4.0",
     "mocha": "^2.2.1",
     "mocha-jshint": "^2.2.3",
     "sinon": "^1.14.1",
