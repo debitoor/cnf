@@ -76,11 +76,18 @@ describe('config', function() {
 		expect(config.me).to.equal(424);
 	});
 
-	it('should parse booleans', function() {
+	it('should parse false', function() {
 		process.argv = ['node', 'file.js', '--app.me','--app.nested.val','false'];
 		var config = require('../../source/config');
 		expect(config.me).to.equal(true);
 		expect(config.nested.val).to.equal(false);
+	});
+
+	it('should parse true', function() {
+		process.argv = ['node', 'file.js', '--app.me','--app.nested.val', 'true'];
+		var config = require('../../source/config');
+		expect(config.me).to.equal(true);
+		expect(config.nested.val).to.equal(true);
 	});
 
 	it('should parse regExp', function() {
