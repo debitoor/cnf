@@ -1,4 +1,4 @@
-cnf [![npm version](https://badge.fury.io/js/cnf.svg)](http://badge.fury.io/js/cnf) [![Build Status](https://travis-ci.org/debitoor/config.svg?branch=master)](https://travis-ci.org/debitoor/config) [![Dependency Status](https://david-dm.org/debitoor/config.svg)](https://david-dm.org/debitoor/config) [![devDependency Status](https://david-dm.org/debitoor/config/dev-status.svg)](https://david-dm.org/debitoor/config#info=devDependencies)
+cnf [![npm version](https://badge.fury.io/js/cnf.svg)](http://badge.fury.io/js/cnf) [![Build Status](https://travis-ci.org/debitoor/config.svg?branch=master)](https://travis-ci.org/debitoor/config) [![Dependency Status](https://david-dm.org/debitoor/config.svg)](https://david-dm.org/debitoor/config) [![devDependency Status](https://david-dm.org/debitoor/config/dev-status.svg)](https://david-dm.org/debitoor/config#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/debitoor/config/badge.svg?branch=master&service=github)](https://coveralls.io/github/debitoor/config?branch=master)
 ===
 
 Configuration loader.
