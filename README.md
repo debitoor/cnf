@@ -13,7 +13,7 @@ var config = require('cnf');
 console.log('port: ' + config.http.port);
 ```
 
-It will look for a configuration file called `$APP_ENV.app.config.js` in the current working directory and will be extended with config from `global.app.config.js`.
+It will look for a configuration file called `/config/$APP_ENV.js` in the current working directory and will be extended with config from `global.js`.
 
 To override configs use a command line argument prefixed with `app.`
 
