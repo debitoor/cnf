@@ -1,6 +1,6 @@
 {
   "name": "cnf",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Configuration loader",
   "scripts": {
     "test": "istanbul cover _mocha",
@@ -11,6 +11,7 @@
     "coveralls": "2.11.4",
     "istanbul": "0.4.0",
     "mocha": "^2.2.1",
+    "mocha-jscs": "4.2.0",
     "mocha-jshint": "^2.2.3",
     "sinon": "^1.14.1",
     "sinon-chai": "^2.7.0"
@@ -20,12 +21,9 @@
     "deep-extend": "^0.4.0",
     "resolve": "^1.1.6"
   },
-  "directories": {
-    "test": "test"
-  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/e-conomic/config.git"
+    "url": "git://github.com/debitoor/config.git"
   },
   "keywords": [
     "configuration"
@@ -33,7 +31,10 @@
   "author": "debitoor",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/e-conomic/config/issues"
+    "url": "https://github.com/debitoor/config/issues"
   },
-  "homepage": "https://github.com/e-conomic/config"
+  "homepage": "https://github.com/debitoor/config",
+  "files": [
+    "source"
+  ]
 }
