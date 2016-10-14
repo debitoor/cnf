@@ -9,7 +9,6 @@ function exportDefaultSupport(envPath) {
 	var envFile = require(envPath);
 	var keys = Object.keys(envFile);
 	if (keys.length === 1 && keys[0] === 'default') {
-		console.log(keys);
 		envFile = envFile.default;
 	}
 	return envFile;
