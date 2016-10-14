@@ -117,5 +117,10 @@ function parseRegExp(value) {
 	return returnRegExp();
 }
 
+var keys = Object.keys(envFile);
+if(keys.length === 1 && keys[0] === 'default'){
+	envFile = envFile.default;
+}
+
 module.exports = envFile;
 module.exports.env = env;
