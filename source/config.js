@@ -3,24 +3,24 @@ var path = require('path');
 var resolve = require('resolve');
 var env = process.env.APP_ENV || process.env.NODE_ENV || 'development';
 var deepExtend = require('deep-extend');
-var globalConfig;
+var globalConfig, globalConfigPath, envFile, envPath;
 
 try {
-	var envPath = resolve.sync(env + '.app.config.js', {
+	envPath = resolve.sync(env + '.app.config.js', {
 		basedir: process.cwd(),
 		moduleDirectory: 'config'
 	});
-	var envFile = require(envPath);
+	envFile = require(envPath);
 } catch (ex) {
-	var envPath = resolve.sync(env + '.js', {
+	envPath = resolve.sync(env + '.js', {
 		basedir: process.cwd(),
 		moduleDirectory: 'config'
 	});
-	var envFile = require(envPath);
+	envFile = require(envPath);
 }
 
 try {
-	var globalConfigPath = resolve.sync('global.app.config.js', {
+	globalConfigPath = resolve.sync('global.app.config.js', {
 		basedir: process.cwd(),
 		moduleDirectory: 'config'
 	});
@@ -30,11 +30,11 @@ try {
 }
 if (!globalConfig) {
 	try {
-		var globalConfigPath = resolve.sync('global.js', {
+		globalConfigPath = resolve.sync('global.js', {
 			basedir: process.cwd(),
 			moduleDirectory: 'config'
 		});
-		var globalConfig = require(globalConfigPath);
+		globalConfig = require(globalConfigPath);
 		envFile = deepExtend(globalConfig, envFile);
 	} catch (e) {
 	}
