@@ -5,18 +5,28 @@ var env = process.env.APP_ENV || process.env.NODE_ENV || 'development';
 var deepExtend = require('deep-extend');
 var globalConfig, globalConfigPath, envFile, envPath;
 
+function exportDefaultSupport(envPath) {
+	var envFile = require(envPath);
+	var keys = Object.keys(envFile);
+	if (keys.length === 1 && keys[0] === 'default') {
+		console.log(keys);
+		envFile = envFile.default;
+	}
+	return envFile;
+}
+
 try {
 	envPath = resolve.sync(env + '.app.config.js', {
 		basedir: process.cwd(),
 		moduleDirectory: 'config'
 	});
-	envFile = require(envPath);
+	envFile = exportDefaultSupport(envPath);
 } catch (ex) {
 	envPath = resolve.sync(env + '.js', {
 		basedir: process.cwd(),
 		moduleDirectory: 'config'
 	});
-	envFile = require(envPath);
+	envFile = exportDefaultSupport(envPath);
 }
 
 try {
@@ -24,7 +34,7 @@ try {
 		basedir: process.cwd(),
 		moduleDirectory: 'config'
 	});
-	globalConfig = require(globalConfigPath);
+	globalConfig = exportDefaultSupport(globalConfigPath);
 	envFile = deepExtend(globalConfig, envFile);
 } catch (e) {
 }
@@ -34,11 +44,10 @@ if (!globalConfig) {
 			basedir: process.cwd(),
 			moduleDirectory: 'config'
 		});
-		globalConfig = require(globalConfigPath);
+		globalConfig = exportDefaultSupport(globalConfigPath);
 		envFile = deepExtend(globalConfig, envFile);
 	} catch (e) {
 	}
-
 }
 
 var replaceConfigs = function (visit) {
@@ -115,11 +124,6 @@ replaceConfigs(function (keys, value) {
 function parseRegExp(value) {
 	var returnRegExp = new Function("return " + isRegExp.exec(value)[1] + ";");
 	return returnRegExp();
-}
-
-var keys = Object.keys(envFile);
-if(keys.length === 1 && keys[0] === 'default'){
-	envFile = envFile.default;
 }
 
 module.exports = envFile;
