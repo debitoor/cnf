@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/debitoor/config.git"
+    "url": "git://github.com/debitoor/cnf.git"
   },
   "keywords": [
     "configuration"
@@ -31,9 +31,9 @@
   "author": "debitoor",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/debitoor/config/issues"
+    "url": "https://github.com/debitoor/cnf/issues"
   },
-  "homepage": "https://github.com/debitoor/config",
+  "homepage": "https://github.com/debitoor/cnf",
   "files": [
     "source"
   ]
