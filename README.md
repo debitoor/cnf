@@ -3,7 +3,7 @@ cnf [![npm version](https://badge.fury.io/js/cnf.svg)](http://badge.fury.io/js/c
 
 Configuration loader.
 
-	npm install -S -E cnf 
+	npm install -SE cnf 
 
 To use it simply require it:
 
