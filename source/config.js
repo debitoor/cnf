@@ -1,13 +1,11 @@
-var fs = require('fs');
-var path = require('path');
-var resolve = require('resolve');
-var env = process.env.APP_ENV || process.env.NODE_ENV || 'development';
-var deepExtend = require('deep-extend');
-var globalConfig, globalConfigPath, envFile, envPath;
+const resolve = require('resolve');
+const env = process.env.APP_ENV || process.env.NODE_ENV || 'development';
+const deepExtend = require('deep-extend');
+let globalConfig, globalConfigPath, envFile, envPath;
 
 function exportDefaultSupport(envPath) {
-	var envFile = require(envPath);
-	var keys = Object.keys(envFile);
+	let envFile = require(envPath);
+	const keys = Object.keys(envFile);
 	if (keys.length === 1 && keys[0] === 'default') {
 		envFile = envFile.default;
 	}
@@ -36,6 +34,7 @@ try {
 	globalConfig = exportDefaultSupport(globalConfigPath);
 	envFile = deepExtend(globalConfig, envFile);
 } catch (e) {
+	//ignore error
 }
 if (!globalConfig) {
 	try {
@@ -46,13 +45,14 @@ if (!globalConfig) {
 		globalConfig = exportDefaultSupport(globalConfigPath);
 		envFile = deepExtend(globalConfig, envFile);
 	} catch (e) {
+		//ignore error
 	}
 }
 
-var replaceConfigs = function (visit) {
-	var next = function (prevKeys, obj) {
+const replaceConfigs = function (visit) {
+	const next = function (prevKeys, obj) {
 		Object.keys(obj).forEach(function (key) {
-			var keys = prevKeys.concat(key);
+			const keys = prevKeys.concat(key);
 
 			if (typeof obj[key] === 'object' && obj[key]) {
 				return next(keys, obj[key]);
@@ -64,7 +64,7 @@ var replaceConfigs = function (visit) {
 
 	next([], envFile);
 };
-var lookupConfig = function (key) {
+const lookupConfig = function (key) {
 	if (!key.length) {
 		return envFile;
 	}
@@ -79,16 +79,16 @@ var lookupConfig = function (key) {
 process.argv.filter(function (arg) {
 	return arg.indexOf('--app.') === 0;
 }).map(function (arg) {
-	var value = process.argv[process.argv.indexOf(arg) + 1];
-	var key = arg.split('.').slice(1);
-	var result = {};
+	const value = process.argv[process.argv.indexOf(arg) + 1];
+	const key = arg.split('.').slice(1);
+	const result = {};
 
 	result.key = key.pop();
 	result.parent = key;
 	result.value = !value || value.indexOf('-') === 0 || value;
 	return result;
 }).forEach(function (item) {
-	var parent = lookupConfig(item.parent);
+	const parent = lookupConfig(item.parent);
 
 	if (!parent) {
 		return;
@@ -96,7 +96,7 @@ process.argv.filter(function (arg) {
 	parent[item.key] = item.value;
 });
 
-var isRegExp = /^\$regexp\((\/.+\/(g|m|i){0,3})\)$/;
+const isRegExp = /^\$regexp\((\/.+\/(g|m|i){0,3})\)$/;
 
 replaceConfigs(function (keys, value) {
 	if (typeof value !== 'string') {
@@ -121,7 +121,7 @@ replaceConfigs(function (keys, value) {
 });
 
 function parseRegExp(value) {
-	var returnRegExp = new Function("return " + isRegExp.exec(value)[1] + ";");
+	const returnRegExp = new Function('return ' + isRegExp.exec(value)[1] + ';');
 	return returnRegExp();
 }
 
