@@ -1,6 +1,6 @@
 {
   "name": "cnf",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "description": "Configuration loader",
   "scripts": {
     "test": "istanbul cover _mocha",
