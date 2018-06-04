@@ -57,47 +57,47 @@ describe('config', function() {
 	});
 
 	it('should override with cli args', function() {
-		process.argv = ['node', 'file.js', '--app.me','hello'];
+		process.argv = ['node', 'file.js', '--app.me', 'hello'];
 		var config = require('../../source/config');
 		expect(config.me).to.equal('hello');
 		expect(config.nested.val).to.equal(42);
 	});
 
 	it('should not override non prefixed cli args', function() {
-		process.argv = ['node', 'file.js', '--me','hello'];
+		process.argv = ['node', 'file.js', '--me', 'hello'];
 		var config = require('../../source/config');
 		expect(config.me).to.equal('development');
 		expect(config.nested.val).to.equal(42);
 	});
 
 	it('should parse numbers', function() {
-		process.argv = ['node', 'file.js', '--app.me','424'];
+		process.argv = ['node', 'file.js', '--app.me', '424'];
 		var config = require('../../source/config');
 		expect(config.me).to.equal(424);
 	});
 
 	it('should parse false', function() {
-		process.argv = ['node', 'file.js', '--app.me','--app.nested.val','false'];
+		process.argv = ['node', 'file.js', '--app.me', '--app.nested.val', 'false'];
 		var config = require('../../source/config');
 		expect(config.me).to.equal(true);
 		expect(config.nested.val).to.equal(false);
 	});
 
 	it('should parse true', function() {
-		process.argv = ['node', 'file.js', '--app.me','--app.nested.val', 'true'];
+		process.argv = ['node', 'file.js', '--app.me', '--app.nested.val', 'true'];
 		var config = require('../../source/config');
 		expect(config.me).to.equal(true);
 		expect(config.nested.val).to.equal(true);
 	});
 
 	it('should parse regExp', function() {
-		process.argv = ['node', 'file.js', '--app.nested.val','$regexp(/.*/)'];
+		process.argv = ['node', 'file.js', '--app.nested.val', '$regexp(/.*/)'];
 		var config = require('../../source/config');
-		expect(config.nested.val, JSON.stringify(config, null, "\t")).to.have.property("source",".*");
+		expect(config.nested.val, JSON.stringify(config, null, '\t')).to.have.property('source', '.*');
 	});
 
 	it('should set arguments passed from cli', function() {
-		process.argv = ['node', 'file.js', '--app.lolz','--app.anothernested.val','42'];
+		process.argv = ['node', 'file.js', '--app.lolz', '--app.anothernested.val', '42'];
 		var config = require('../../source/config');
 		expect(config.lolz).to.equal(true);
 		expect(config.anothernested).to.not.exist;

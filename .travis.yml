@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - stable
-  - 4.4
+  - 6
+  - 8
 after_success: "npm run coveralls"
 sudo: false

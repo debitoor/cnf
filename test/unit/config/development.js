@@ -1,5 +1,5 @@
 module.exports = {
-	me:'development',
+	me: 'development',
 	nested: {
 		val: 42
 	}
