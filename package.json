@@ -3,24 +3,21 @@
   "version": "3.3.2",
   "description": "Configuration loader",
   "scripts": {
-    "test": "istanbul cover _mocha",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "test": "mocha"
   },
   "devDependencies": {
-    "@debitoor/eslint-config-debitoor": "2.3.0",
+    "@debitoor/eslint-config-debitoor": "3.0.2",
     "@debitoor/mocha-strict-dependencies": "1.1.0",
-    "chai": "4.1.2",
-    "coveralls": "3.0.1",
-    "istanbul": "0.4.5",
-    "mocha": "5.2.0",
-    "mocha-eslint": "4.1.0",
-    "sinon": "5.0.10",
-    "sinon-chai": "3.1.0"
+    "chai": "4.2.0",
+    "mocha": "6.2.0",
+    "mocha-eslint": "5.0.0",
+    "sinon": "7.5.0",
+    "sinon-chai": "3.3.0"
   },
   "main": "./source/config.js",
   "dependencies": {
     "deep-extend": "0.6.0",
-    "resolve": "1.7.1"
+    "resolve": "1.12.0"
   },
   "repository": {
     "type": "git",

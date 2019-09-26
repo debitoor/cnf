@@ -49,9 +49,9 @@ if (!globalConfig) {
 	}
 }
 
-const replaceConfigs = function (visit) {
-	const next = function (prevKeys, obj) {
-		Object.keys(obj).forEach(function (key) {
+const replaceConfigs = function(visit) {
+	const next = function(prevKeys, obj) {
+		Object.keys(obj).forEach(function(key) {
 			const keys = prevKeys.concat(key);
 
 			if (typeof obj[key] === 'object' && obj[key]) {
@@ -64,21 +64,21 @@ const replaceConfigs = function (visit) {
 
 	next([], envFile);
 };
-const lookupConfig = function (key) {
+const lookupConfig = function(key) {
 	if (!key.length) {
 		return envFile;
 	}
 	if (!Array.isArray(key)) {
 		return lookupConfig(key.split('.'));
 	}
-	return key.reduce(function (result, key) {
+	return key.reduce(function(result, key) {
 		return result && result[key];
 	}, envFile);
 };
 
-process.argv.filter(function (arg) {
+process.argv.filter(function(arg) {
 	return arg.indexOf('--app.') === 0;
-}).map(function (arg) {
+}).map(function(arg) {
 	const value = process.argv[process.argv.indexOf(arg) + 1];
 	const key = arg.split('.').slice(1);
 	const result = {};
@@ -87,7 +87,7 @@ process.argv.filter(function (arg) {
 	result.parent = key;
 	result.value = !value || value.indexOf('-') === 0 || value;
 	return result;
-}).forEach(function (item) {
+}).forEach(function(item) {
 	const parent = lookupConfig(item.parent);
 
 	if (!parent) {
@@ -98,11 +98,11 @@ process.argv.filter(function (arg) {
 
 const isRegExp = /^\$regexp\((\/.+\/(g|m|i){0,3})\)$/;
 
-replaceConfigs(function (keys, value) {
+replaceConfigs(function(keys, value) {
 	if (typeof value !== 'string') {
 		return value;
 	}
-	value = value.replace(/\$\(([^\)]+)\)/g, function (_, key) {
+	value = value.replace(/\$\(([^\)]+)\)/g, function(_, key) {
 		return lookupConfig(key);
 	});
 	if (/^\d+$/.test(value)) {
